@@ -1,4 +1,5 @@
 import random
+import sys
 
 class Erou:
     def __init__(self,viata,agilitate,noroc,magie,forta,inteligenta,numerar):
@@ -13,6 +14,12 @@ class Erou:
         self.viata-=nr
     def crestehp(self,nr):
         self.viata+=nr
+    def cresteagilitatea(self,nr):
+        self.agilitate+=nr
+    def cresteinteligenta(self,nr):
+        self.inteligenta+=nr
+    def statistici(self):
+        return "viata : {}  agilitate: {}  noroc: {}  forta: {}  inteligenta: {}  numerar: {}".format(self.viata,self.agilitate,self.noroc,self.forta,self.inteligenta,self.numerar) 
 
 class Soldat(Erou):
     def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta,numerar):
@@ -52,19 +59,19 @@ erou=nume
 while(1):
     if(acceptare=='1'):
         if(tip==1):
-            erou=Soldat(100,80,random.randrange(70,101),0,85,50,0)
+            erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),0,random.randrange(80,96),random.randrange(0,51),20)
             print("{} este soldat!".format(nume))
             break
         elif(tip==2):
-            erou=Vrajitor(100,75,random.randrange(50,101),90,40,80,0)
+            erou=Vrajitor(100,random.randrange(65,76),random.randrange(50,101),random.range(80,96),random.randrange(0,51),random.randrange(70,91),20)
             print("{} este vrajitor!".format(nume))
             break
         elif(tip==3):
-            erou=Savant(100,75,random.randrange(50,101),80,50,85,0)
+            erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20)
             print("{} este savant!".format(nume))
             break
         else:
-            erou=Asasin(100,85,random.randrange(50,101),70,80,65,0)
+            erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20)
             print("{} este asasin!".format(nume))
             break
     else:
@@ -76,21 +83,23 @@ while(1):
             else:
                 print("optiune incorecta")
         if(tip=='1'):
-            erou=Soldat(100,65,random.randrange(50,101),0,85,50,0)
+            erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),0,random.randrange(80,96),random.randrange(0,51),20)
             print("Ai ales clasa soldat!")
             break
         elif(tip=='2'):
-            erou=Vrajitor(100,65,random.randrange(50,101),90,40,80,0)
+            erou=Vrajitor(100,random.randrange(65,76),random.randrange(50,101),random.range(80,96),random.randrange(0,51),random.randrange(70,91),20)
             print("Ai ales clasa vrajitor!")
             break
         elif(tip=='3'):
-            erou=Savant(100,60,random.randrange(50,101),80,40,85,0)
+            erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20)
             print("Ai ales clasa savant!")
             break
         else:
-            erou=Asasin(100,85,random.randrange(50,101),70,75,65,0)
+            erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20)
             print("Ai ales clasa asasin!")
-            break    
+            break
+print("{} are anumite statistici cum ar fi sanatatea, norocul, agilitatea , abilitatile magice, forta si inteligenta. De asemena, eroul are si o valuta cu care isi poate achizitiona anumite obiecte care il pot ajuta pe drum.".format(nume))
+print("Statisticile actuale are eroului sunt {}".format(erou.statistici()))    
 print("Batrana ii mai da tanarului {} o harta a unui taram indepartat numit Eldoria, unde se spune ca s-ar afla elixirul nemuririi\nAstfel, {} pleaca spre Eldoria si ajunge intr-o padure fermecata unde vede o ciuperca atragatoare, {} fiind infometat.".format(nume,nume,nume))
 print("Vrei sa mananci ciuperca ? Introdu 1 pentru da sau 2 pentru nu")
 while(1):
@@ -98,7 +107,36 @@ while(1):
     if(alegere=='1' or alegere=='2'):
         break
     print("optiune incorecta")
-
+if(alegere=='1'):
+    if(erou.noroc<70):
+        print("Nu ai fost foarte norocos si ai facut toxinfectie alimentara si a trebuit sa te intorci acasa.\nGAME OVER")
+        sys.exit()
+    else:
+        if(type(erou)==Soldat):
+            print("Ciuperca ti-a crescut agilitatea cu 10")
+            erou.cresteagilitatea(10)
+            print("noile statistici sunt : {}".format(erou.statistici()))
+        elif(type(erou)==Vrajitor):
+            print("Ciuperca ti-a crescut agilitatea cu 10")
+            erou.cresteagilitatea(10)
+            print("noile statistici sunt : {}".format(erou.statistici()))
+        elif(type(erou)==Savant):
+            print("Ciuperca ti-a crescut agilitatea cu 10")
+            erou.cresteagilitatea(10)
+            print("noile statistici sunt : {}".format(erou.statistici()))
+        else:
+            print("Ciuperca ti-a crescut inteligenta cu 10")
+            erou.cresteinteligenta(10)
+            print("noile statistici sunt : {}".format(erou.statistici()))
+print("In padure dai de un urs cu un diamant in frunte care vine insistent catre tine. Ce faci?\n1.Il ataci si dezlantui o lupta intensa\n2.Faci o vraja asupra lui sa devina prietenul tau si sa vorbeasca limba oamenilor\n3.Vorbesti pe limba lui si il convingi ca esti pasnic\n4.Te feresti de urs si te urci intr-un copac")
+while(1):
+    alegere=input()
+    if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+        break
+    print("optiune incorecta")
+if(type(erou)==Soldat):
+    if(alegere=='1'):
+        print
 
 
 
