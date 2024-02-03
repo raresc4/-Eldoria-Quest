@@ -13,6 +13,16 @@ def delay_print(s):
         sys.stdout.flush()
         time.sleep(0.01)
 
+class Gigant:
+    def __init__(self,viata,agilitate,magie,forta,inteligenta):
+        self.viata=viata
+        self.agilitate=agilitate
+        self.forta=forta
+        self.inteligenta=inteligenta
+        self.magie=magie
+    def scadehp(self,nr):
+        self.viata-=nr
+
 class Elf:
     def __init__(self,viata,agilitate,magie,forta,inteligenta):
         self.viata=viata
@@ -48,25 +58,29 @@ class Erou:
         return "viata : {}  agilitate: {}  noroc: {}  magie: {}  forta: {}  inteligenta: {}  numerar: {}".format(self.viata,self.agilitate,self.noroc,self.magie,self.forta,self.inteligenta,self.numerar) 
 
 class Soldat(Erou):
-    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta,numerar,diamand,scurtatura):
+    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta,numerar,diamand,scurtatura,avantaj):
         super().__init__(viata, agilitate, noroc, forta, magie, inteligenta,numerar)
         self.diamand=diamand
         self.scurtatura=scurtatura
+        self.avantaj=avantaj
 
 class Vrajitor(Erou):
-    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta, numerar,prieten):
+    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta, numerar,prieten,avantaj):
         super().__init__(viata, agilitate, noroc, magie, forta, inteligenta, numerar)
         self.prieten=prieten
+        self.avantaj=avantaj
 
 class Savant(Erou):
-    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta, numerar,prieten):
+    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta, numerar,prieten,avantaj):
         super().__init__(viata, agilitate, noroc, magie, forta, inteligenta, numerar)
         self.prieten=prieten
+        self.avantaj=avantaj
     
 class Asasin(Erou):
-    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta, numerar,scurtatura):
+    def __init__(self, viata, agilitate, noroc, magie, forta, inteligenta, numerar,scurtatura,avantaj):
         super().__init__(viata, agilitate, noroc, magie, forta, inteligenta, numerar)
         self.scurtatura=scurtatura
+        self.avantaj=avantaj
 
 delay_print("Bine ai venit! Introdu numele pe care vrei sa il aiba eroul\n")
 nume=input()
@@ -98,19 +112,19 @@ while(1):
         case '1':
             match(tip):
                 case 1:
-                    erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False)
+                    erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False,False)
                     print("{} este soldat!".format(nume))
                     break
                 case 2:
-                    erou=Vrajitor(100,random.randrange(65,76),random.randrange(70,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False)
+                    erou=Vrajitor(100,random.randrange(65,76),random.randrange(70,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False,False)
                     print("{} este vrajitor!".format(nume))
                     break
                 case 3:
-                    erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False)
+                    erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False,False)
                     print("{} este savant!".format(nume))
                     break
                 case 4:
-                    erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False)
+                    erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False,False)
                     print("{} este asasin!".format(nume))
                     break
         case '2':
@@ -123,19 +137,19 @@ while(1):
                     print("optiune incorecta")
             match(tip):
                 case '1':
-                    erou=Soldat(100,random.randrange(75,91),random.randrange(50,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False)
+                    erou=Soldat(100,random.randrange(75,91),random.randrange(50,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False,False)
                     print("Ai ales clasa soldat!")
                     break
                 case '2':
-                    erou=Vrajitor(100,random.randrange(65,76),random.randrange(50,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False)
+                    erou=Vrajitor(100,random.randrange(65,76),random.randrange(50,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False,False)
                     print("Ai ales clasa vrajitor!")
                     break
                 case '3':
-                    erou=Savant(100,random.randrange(65,76),random.randrange(50,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False)
+                    erou=Savant(100,random.randrange(65,76),random.randrange(50,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False,False)
                     print("Ai ales clasa savant!")
                     break
                 case '4':
-                    erou=Asasin(100,random.randrange(80,96),random.randrange(50,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False)
+                    erou=Asasin(100,random.randrange(80,96),random.randrange(50,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False,False)
                     print("Ai ales clasa asasin!")
                     break
 delay_print("{} are anumite statistici cum ar fi sanatatea, norocul, agilitatea , abilitatile magice, forta si inteligenta.".format(nume))
@@ -308,99 +322,186 @@ os.system('cls')
 elf=Elf(200,100-erou.agilitate,100-erou.magie,100-erou.forta,100-erou.inteligenta)
 if(type(erou)==Savant or type(erou)==Vrajitor):
     if(erou.prieten==False):
-       delay_print("In continuare te intalnesti cu un elf ca cel din stapanul inelelor\n")
-    while(1):
-        delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra elfului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Te folosesti de agilitatea ta si te feresti de atacurile elfului si incerci sa-l iei prin surprindere\n")
-        delay_print("Viata elfului este : {}\nStatisticile tale sunt {}\n".format(elf.viata,erou.statistici()))
+        delay_print("In continuare te intalnesti cu un elf ca cel din stapanul inelelor\n")
         while(1):
-            alegere=input()
-            if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
-                break                
-            print("optiune incorecta")
-        os.system('cls')
-        match(alegere):
-            case '1':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.forta,elf.forta))
-                erou.scadehp(elf.forta)
-                elf.scadehp(erou.forta)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break
-            case '2':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.magie,elf.magie))
-                erou.scadehp(elf.magie)
-                elf.scadehp(erou.magie)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break 
-            case '3':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.inteligenta,elf.inteligenta))
-                erou.scadehp(elf.inteligenta)
-                elf.scadehp(erou.inteligenta)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break
-            case '4':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.agilitate,elf.agilitate))
-                erou.scadehp(elf.agilitate)
-                elf.scadehp(erou.agilitate)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break
+            delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra elfului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Te folosesti de agilitatea ta si te feresti de atacurile elfului si incerci sa-l iei prin surprindere\n")
+            delay_print("Viata elfului este : {}\nStatisticile tale sunt {}\n".format(elf.viata,erou.statistici()))
+            while(1):
+                alegere=input()
+                if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+                    break                
+                print("optiune incorecta")
+            os.system('cls')
+            match(alegere):
+                case '1':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.forta,elf.forta))
+                    erou.scadehp(elf.forta)
+                    elf.scadehp(erou.forta)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break
+                case '2':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.magie,elf.magie))
+                    erou.scadehp(elf.magie)
+                    elf.scadehp(erou.magie)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break 
+                case '3':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.inteligenta,elf.inteligenta))
+                    erou.scadehp(elf.inteligenta)
+                    elf.scadehp(erou.inteligenta)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break
+                case '4':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.agilitate,elf.agilitate))
+                    erou.scadehp(elf.agilitate)
+                    elf.scadehp(erou.agilitate)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break
+    delay_print("Apasa enter pentru a continua\n")
+    alegere=input()
+    os.system('cls')
 else:
     if(erou.scurtatura==False):
-       delay_print("In continuare te intalnesti cu un elf ca cel din stapanul inelelor\n")
-    while(1):
-        delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra elfului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Te folosesti de agilitatea ta si te feresti de atacurile elfului si incerci sa-l iei prin surprindere\n")
-        delay_print("Viata elfului este : {}\nStatisticile tale sunt {}\n".format(elf.viata,erou.statistici()))
+        delay_print("In continuare te intalnesti cu un elf ca cel din stapanul inelelor\n")
         while(1):
-            alegere=input()
-            if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
-                break                
-            print("optiune incorecta")
-        os.system('cls')
-        match(alegere):
-            case '1':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.forta,elf.forta))
-                erou.scadehp(elf.forta)
-                elf.scadehp(erou.forta)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break
-            case '2':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.magie,elf.magie))
-                erou.scadehp(elf.magie)
-                elf.scadehp(erou.magie)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break 
-            case '3':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.inteligenta,elf.inteligenta))
-                erou.scadehp(elf.inteligenta)
-                elf.scadehp(erou.inteligenta)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break
-            case '4':
-                delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.agilitate,elf.agilitate))
-                erou.scadehp(elf.agilitate)
-                elf.scadehp(erou.agilitate)
-                if(erou.viata<=0):
-                    gameover()
-                if(elf.viata<=0):
-                    print("Ai infrant elful cu succes")
-                    break
+            delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra elfului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Te folosesti de agilitatea ta si te feresti de atacurile elfului si incerci sa-l iei prin surprindere\n")
+            delay_print("Viata elfului este : {}\nStatisticile tale sunt {}\n".format(elf.viata,erou.statistici()))
+            while(1):
+                alegere=input()
+                if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+                    break                
+                print("optiune incorecta")
+            os.system('cls')
+            match(alegere):
+                case '1':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.forta,elf.forta))
+                    erou.scadehp(elf.forta)
+                    elf.scadehp(erou.forta)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break
+                case '2':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.magie,elf.magie))
+                    erou.scadehp(elf.magie)
+                    elf.scadehp(erou.magie)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break 
+                case '3':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.inteligenta,elf.inteligenta))
+                    erou.scadehp(elf.inteligenta)
+                    elf.scadehp(erou.inteligenta)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break
+                case '4':
+                    delay_print("I-ai scazut viata elfului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.agilitate,elf.agilitate))
+                    erou.scadehp(elf.agilitate)
+                    elf.scadehp(erou.agilitate)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(elf.viata<=0):
+                        print("Ai infrant elful cu succes")
+                        break
+    delay_print("Apasa enter pentru a continua\n")
+    alegere=input()
+    os.system('cls')
+if(type(erou)==Savant or type(erou)==Vrajitor):
+    if(erou.prieten==False):
+        delay_print("Dupa ce ai infrant elful, iti continui drumul spre Eldoria ")
+    else:
+        delay_print("Iti continui drumul spre Eldoria ")
+else:
+    if(erou.scurtatura==False):
+        delay_print("Dupa ce ai infrant elful, iti continui drumul spre Eldoria ")
+    else:
+        delay_print("Iti continui drumul spre Eldoria ")
+delay_print("si te intalnesti cu o vrajitoare care te intreaba ce cauti pe aceste taramuri\nCe ii vei raspunde?\n1.Doar in trecere\n2.Caut sa ajung in Eldoria si sa gasesc elixirul tineretii\n")
+while(1):
+    alegere=input()
+    if(alegere=='1' or alegere=='2'):
+        break
+    print("optiune incorecta")
+os.system('cls')
+match(alegere):
+    case '1':
+        delay_print("Vrajitoarea spune: Treaba ta\nDupa isi vede de drum\n")
+    case '2':
+        if(erou.noroc>=85):
+            delay_print("Vrajitoarea spune: Multi au incercat, dar niciunul nu a reusit pana acum\nMa mir ca ai ajuns si pana aici\nLa portile templului din Eldoria unde se ascunde elixirul nemurii se afla un gigant de piatra daca pazeste acel elixir\nDupa ce infrangi acel gigant mai urmeaza si alte teste pana sa ajungi la elixir\nUite ia de aici aceasta amuleta iar cand o sa ai nevoie de mine eu voi sti unde te afli si voi veni sa te ajut\nMult noroc\n")
+            erou.avantaj=True
+        else:
+            delay_print("Vrajitoarea spune: Nu stiu de nicio Eldoria\nDupa isi vede de drum\n")
+print("Apasa enter pentru a continua")
+alegere=input()
+os.system('cls')
+match(erou.avantaj):
+    case True:
+        delay_print("{} ajunge la portile templului din Eldoria si se intalneste cu gigantul de piatra\nAcesta constata ca pentru a deschide poarta are nevoie de inima gigantului\nAtunci apare vrajitoarea ce ai cunoscut-o mai devreme si iti spune ca te va ajuta ea sa treci de aceste porti\nAceasta te duce pe un teren subteran si intr un final ajungi intr-o camera din acel templu.\n".format(nume))
+    case False:
+        delay_print("{} ajunge in Eldoria si se ghideaza dupa propria harta si ajunge la un templu pazit de un gigant de piatra\nAcesta constata ca pentru a deschide poarta are nevoie de inima gigantului si isi da seama ca singura metoda de a obine este sa se lupte cu gigantul si sa o ia de la el\n".format(nume))
+        gigant=Gigant(200,100-erou.agilitate,100-erou.magie,100-erou.forta,100-erou.inteligenta)
+        while(1):
+            delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra gigantului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Te folosesti de agilitatea ta si te feresti de atacurile gigantului si incerci sa-l iei prin surprindere\n")
+            delay_print("Viata gigantului este : {}\nStatisticile tale sunt {}\n".format(gigant.viata,erou.statistici()))
+            while(1):
+                alegere=input()
+                if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+                    break                
+                print("optiune incorecta")
+            os.system('cls')
+            match(alegere):
+                case '1':
+                    delay_print("I-ai scazut viata gigantului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.forta,gigant.forta))
+                    erou.scadehp(gigant.forta)
+                    gigant.scadehp(erou.forta)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(gigant.viata<=0):
+                        print("Ai infrant gigantul cu succes")
+                        break
+                case '2':
+                    delay_print("I-ai scazut viata gigantului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.magie,gigant.magie))
+                    erou.scadehp(gigant.magie)
+                    gigant.scadehp(erou.magie)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(gigant.viata<=0):
+                        print("Ai infrant gigantul cu succes")
+                        break 
+                case '3':
+                    delay_print("I-ai scazut viata gigantului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.inteligenta,gigant.inteligenta))
+                    erou.scadehp(gigant.inteligenta)
+                    gigant.scadehp(erou.inteligenta)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(gigant.viata<=0):
+                        print("Ai infrant gigantul cu succes")
+                        break
+                case '4':
+                    delay_print("I-ai scazut viata gigantului cu {} procente, dar si el ti-a scazut viata cu {} procente\n".format(erou.agilitate,gigant.agilitate))
+                    erou.scadehp(gigant.agilitate)
+                    gigant.scadehp(erou.agilitate)
+                    if(erou.viata<=0):
+                        gameover()
+                    if(gigant.viata<=0):
+                        print("Ai infrant gigantul cu succes")
+                        break               
