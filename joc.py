@@ -13,6 +13,16 @@ def delay_print(s):
         sys.stdout.flush()
         time.sleep(0.01)
 
+class Elf:
+    def __init__(self,viata,agilitate,magie,forta,inteligenta):
+        self.viata=viata
+        self.agilitate=agilitate
+        self.forta=forta
+        self.inteligenta=inteligenta
+        self.magie=magie
+    def scadehp(self,nr):
+        self.viata-=nr
+
 class Erou:
     def __init__(self,viata,agilitate,noroc,magie,forta,inteligenta,numerar):
         self.viata=viata
@@ -62,18 +72,19 @@ delay_print("Bine ai venit! Introdu numele pe care vrei sa il aiba eroul\n")
 nume=input()
 os.system('cls')
 delay_print("Actiunea se petrece in vremuri demult apuse, pe taramuri din basme\nPovestea incepe cu eroul nostru {}, un tanar dintr-un sat indepatat care se hotaraste sa plece din casa parintilor lui ca sa-si gaseasca menirea. El se hotaraste sa mearga la hanul din sat prima data ca sa se gandeasca unde sa plece si ce sa faca. Acolo apare o clarvazatoare batrana care ii spune ca ii va ghici destinul, iar tanarul {} accepta.".format(nume,nume))
-print("Apasa enter pentru a continua si enter")
+print("Apasa enter pentru a continua")
 enter=input()
 os.system('cls')
 tip=random.randrange(1,5)
-if(tip==1):
-    delay_print("Batrana crede ca vei fi soldat bun!\n")
-elif(tip==2):
-    delay_print("Batrana crede ca ai anumite puteri magice si ca vei deveni vrajitor!\n")
-elif(tip==3):
-    delay_print("Batrana crede ca vei fi un savant bun!\n")
-else:
-    delay_print("Batrana crede ca vei fi un asasin bun!\n")
+match(tip):
+    case 1:
+        delay_print("Batrana crede ca vei fi soldat bun!\n")
+    case 2:
+        delay_print("Batrana crede ca ai anumite puteri magice si ca vei deveni vrajitor!\n")
+    case 3:
+        delay_print("Batrana crede ca vei fi un savant bun!\n")
+    case 4:
+        delay_print("Batrana crede ca vei fi un asasin bun!\n")
 delay_print("Accepti soarta pe care ti-a dat-o batrana(Decizia implica ca {} va devenii clasa data de batrana)?\nIntrodu 1 pentru da sau 2 pentru nu\n".format(nume))
 while(1):
     acceptare=input()
@@ -83,47 +94,50 @@ while(1):
 erou=nume
 os.system('cls')
 while(1):
-    if(acceptare=='1'):
-        if(tip==1):
-            erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False)
-            print("{} este soldat!".format(nume))
-            break
-        elif(tip==2):
-            erou=Vrajitor(100,random.randrange(65,76),random.randrange(70,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False)
-            print("{} este vrajitor!".format(nume))
-            break
-        elif(tip==3):
-            erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False)
-            print("{} este savant!".format(nume))
-            break
-        else:
-            erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False)
-            print("{} este asasin!".format(nume))
-            break
-    else:
-        while(1):
-            print("Introdu clasa pe care vrei sa o aiba eroul 1 pentru soldat, 2 pentru vrajitor, 3 pentru savant si 4 pentru asasin\nSoldatul are ca atribut principal fort, vrajitorul magia, savantul inteligenta si asasinul agilitatea")
-            tip=input()
-            if(tip=='1' or tip=='2' or tip=='3' or tip=='4'):
-                break
-            else:
-                print("optiune incorecta")
-        if(tip=='1'):
-            erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False)
-            print("Ai ales clasa soldat!")
-            break
-        elif(tip=='2'):
-            erou=Vrajitor(100,random.randrange(65,76),random.randrange(50,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False)
-            print("Ai ales clasa vrajitor!")
-            break
-        elif(tip=='3'):
-            erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False)
-            print("Ai ales clasa savant!")
-            break
-        else:
-            erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False)
-            print("Ai ales clasa asasin!")
-            break
+    match(acceptare):
+        case '1':
+            match(tip):
+                case 1:
+                    erou=Soldat(100,random.randrange(75,91),random.randrange(70,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False)
+                    print("{} este soldat!".format(nume))
+                    break
+                case 2:
+                    erou=Vrajitor(100,random.randrange(65,76),random.randrange(70,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False)
+                    print("{} este vrajitor!".format(nume))
+                    break
+                case 3:
+                    erou=Savant(100,random.randrange(65,76),random.randrange(70,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False)
+                    print("{} este savant!".format(nume))
+                    break
+                case 4:
+                    erou=Asasin(100,random.randrange(80,96),random.randrange(70,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False)
+                    print("{} este asasin!".format(nume))
+                    break
+        case '2':
+            while(1):
+                print("Introdu clasa pe care vrei sa o aiba eroul 1 pentru soldat, 2 pentru vrajitor, 3 pentru savant si 4 pentru asasin\nSoldatul are ca atribut principal fort, vrajitorul magia, savantul inteligenta si asasinul agilitatea")
+                tip=input()
+                if(tip=='1' or tip=='2' or tip=='3' or tip=='4'):
+                    break
+                else:
+                    print("optiune incorecta")
+            match(tip):
+                case '1':
+                    erou=Soldat(100,random.randrange(75,91),random.randrange(50,101),random.randrange(80,96),random.randrange(0,21),random.randrange(0,51),20,False,False)
+                    print("Ai ales clasa soldat!")
+                    break
+                case '2':
+                    erou=Vrajitor(100,random.randrange(65,76),random.randrange(50,101),random.randrange(80,96),random.randrange(0,51),random.randrange(70,91),20,False)
+                    print("Ai ales clasa vrajitor!")
+                    break
+                case '3':
+                    erou=Savant(100,random.randrange(65,76),random.randrange(50,101),random.randrange(75,86),random.randrange(0,51),random.randrange(80,96),20,False)
+                    print("Ai ales clasa savant!")
+                    break
+                case '4':
+                    erou=Asasin(100,random.randrange(80,96),random.randrange(50,101),random.randrange(65,81),random.randrange(75,86),random.randrange(65,81),20,False)
+                    print("Ai ales clasa asasin!")
+                    break
 delay_print("{} are anumite statistici cum ar fi sanatatea, norocul, agilitatea , abilitatile magice, forta si inteligenta.".format(nume))
 print("De asemena, eroul are si o valuta cu care isi poate achizitiona anumite obiecte care il pot ajuta pe drum.\n")
 print("Statisticile actuale are eroului sunt {}\n".format(erou.statistici()))    
@@ -138,7 +152,6 @@ os.system('cls')
 if(alegere=='1'):
     if(erou.noroc<70):
         gameover()
-        sys.exit()
     else:
         if(type(erou)==Soldat):
             delay_print("Ciuperca ti-a crescut agilitatea cu 10\n")
@@ -164,93 +177,97 @@ while(1):
     print("optiune incorecta")
 os.system('cls')
 if(type(erou)==Soldat):
-    if(alegere=='1'):
-        delay_print("Ai ales optiunea cea mai buna si ai infrant ursul. De asemenea i-ai luat si diamantul din frunte\n")
-        erou.diamand=True
-    elif(alegere=='2'):
-        print("Incercarile tale de face vraji nu au functionat\nTotosi te ai luptat cu ursul si ai reusit sa fugi de el dar viata ti a scazut drastic")
-        erou.scadehp(100-erou.magie)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    elif(alegere=='3'):
-        print("Ai incercat sa vorbesti pe limba ursului, dar pentru ca nu o sti acesta te-a inteles gresit si te atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
-        erou.scadehp(100-erou.inteligenta)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    else:
-        print("Ai incercat sa fugi de urs si sa te urci in copac, dar tu nefiind prea agil te-ai impiedicat si ursul te-a atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
-        erou.scadehp(100-erou.agilitate)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+    match(alegere):
+        case '1':
+            delay_print("Ai ales optiunea cea mai buna si ai infrant ursul. De asemenea i-ai luat si diamantul din frunte\n")
+            erou.diamand=True
+        case '2':
+            print("Incercarile tale de face vraji nu au functionat\nTotosi te ai luptat cu ursul si ai reusit sa fugi de el dar viata ti a scazut drastic")
+            erou.scadehp(100-erou.magie)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '3':
+            print("Ai incercat sa vorbesti pe limba ursului, dar pentru ca nu o sti acesta te-a inteles gresit si te atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
+            erou.scadehp(100-erou.inteligenta)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '4':
+            print("Ai incercat sa fugi de urs si sa te urci in copac, dar tu nefiind prea agil te-ai impiedicat si ursul te-a atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
+            erou.scadehp(100-erou.agilitate)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
 elif(type(erou)==Vrajitor):
-    if(alegere=='1'):
-        print("Ai incercat sa te lupti cu ursul, dar tu nefiind prea puternic ai fost ranit grav si a trebuit sa fugi")
-        erou.scadehp(100-erou.forta)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    elif(alegere=='2'):
-        print("Ai vrajit ursul cu succes, iar acesta se imprieteneste cu tine si decide sa te ajute si iti spune o scurtatura catre Eldoria")
-        erou.prieten=True    
-    elif(alegere=='3'):
-        print("Ai incercat sa vorbesti pe limba ursului, dar pentru ca nu o sti acesta te-a inteles gresit si te atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
-        erou.scadehp(100-erou.inteligenta)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    else:
-        print("Ai incercat sa fugi de urs si sa te urci in copac, dar tu nefiind prea agil te-ai impiedicat si ursul te-a atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
-        erou.scadehp(100-erou.agilitate)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+    match(alegere):
+        case '1':
+            print("Ai incercat sa te lupti cu ursul, dar tu nefiind prea puternic ai fost ranit grav si a trebuit sa fugi")
+            erou.scadehp(100-erou.forta)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '2':
+            print("Ai vrajit ursul cu succes, iar acesta se imprieteneste cu tine si decide sa te ajute si iti spune o scurtatura catre Eldoria")
+            erou.prieten=True    
+        case '3':
+            print("Ai incercat sa vorbesti pe limba ursului, dar pentru ca nu o sti acesta te-a inteles gresit si te atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
+            erou.scadehp(100-erou.inteligenta)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '4':
+            print("Ai incercat sa fugi de urs si sa te urci in copac, dar tu nefiind prea agil te-ai impiedicat si ursul te-a atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
+            erou.scadehp(100-erou.agilitate)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
 elif(type(erou)==Savant):
-    if(alegere=='1'):
-        print("Ai incercat sa te lupti cu ursul, dar tu nefiind prea puternic ai fost ranit grav si a trebuit sa fugi")
-        erou.scadehp(100-erou.forta)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    elif(alegere=='2'):
-        print("Incercarile tale de face vraji nu au functionat\nTotosi te ai luptat cu ursul si ai reusit sa fugi de el dar viata ti a scazut drastic")
-        erou.scadehp(100-erou.magie)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    elif(alegere=='3'):
-        print("Tu fiind o persoana inteligenta, ai reusit sa vorbesti cu ursul si te-ai imprietenit cu el.\nAcesta a promis ca iti va arata o scurtatura catre Eldoria\n")
-        erou.prieten=True
-    else:
-        erou.scadehp(100-erou.agilitate)
-        print("Ai incercat sa fugi de urs si sa te urci in copac, dar tu nefiind prea agil te-ai impiedicat si ursul te-a atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+    match(alegere):
+        case '1':
+            print("Ai incercat sa te lupti cu ursul, dar tu nefiind prea puternic ai fost ranit grav si a trebuit sa fugi")
+            erou.scadehp(100-erou.forta)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '2':
+            print("Incercarile tale de face vraji nu au functionat\nTotosi te ai luptat cu ursul si ai reusit sa fugi de el dar viata ti a scazut drastic")
+            erou.scadehp(100-erou.magie)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '3':
+            print("Tu fiind o persoana inteligenta, ai reusit sa vorbesti cu ursul si te-ai imprietenit cu el.\nAcesta a promis ca iti va arata o scurtatura catre Eldoria\n")
+            erou.prieten=True
+        case '4':
+            erou.scadehp(100-erou.agilitate)
+            print("Ai incercat sa fugi de urs si sa te urci in copac, dar tu nefiind prea agil te-ai impiedicat si ursul te-a atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
 else:
-    if(alegere=='1'):
-        print("Ai incercat sa te lupti cu ursul, dar tu nefiind prea puternic ai fost ranit grav si a trebuit sa fugi")
-        erou.scadehp(100-erou.forta)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    elif(alegere=='2'):
-        print("Incercarile tale de face vraji nu au functionat\nTotosi te ai luptat cu ursul si ai reusit sa fugi de el dar viata ti a scazut drastic")
-        erou.scadehp(100-erou.magie)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    elif(alegere=='3'):
-        print("Ai incercat sa vorbesti pe limba ursului, dar pentru ca nu o sti acesta te-a inteles gresit si te atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
-        erou.scadehp(100-erou.inteligenta)
-        if(erou.viata<=0):
-            gameover()
-        print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
-    else:
-        print("Fiind destul de agil, ai reusit sa fugi de urs si sa te urci intr-un copac inalt.\nDe acolo de sus vezi o scurtatura catre Eldoria")
-        erou.scurtatura=True
+    match(alegere):
+        case '1':
+            print("Ai incercat sa te lupti cu ursul, dar tu nefiind prea puternic ai fost ranit grav si a trebuit sa fugi")
+            erou.scadehp(100-erou.forta)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '2':
+            print("Incercarile tale de face vraji nu au functionat\nTotosi te ai luptat cu ursul si ai reusit sa fugi de el dar viata ti a scazut drastic")
+            erou.scadehp(100-erou.magie)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '3':
+            print("Ai incercat sa vorbesti pe limba ursului, dar pentru ca nu o sti acesta te-a inteles gresit si te atacat.\nTotusi, ai reusit sa fugi de el dar viata ti-a scazut drastic")
+            erou.scadehp(100-erou.inteligenta)
+            if(erou.viata<=0):
+                gameover()
+            print("Noile tale statistici sunt: {}\n".format(erou.statistici()))
+        case '4':
+            print("Fiind destul de agil, ai reusit sa fugi de urs si sa te urci intr-un copac inalt.\nDe acolo de sus vezi o scurtatura catre Eldoria")
+            erou.scurtatura=True
 delay_print("Iti continui drumul spre Eldoria si te intalnesti cu un negustor pe nume Brock\n")
 print("De la acesta poti cumpara diverse lucruri, cum ar fi o licoare care sa-ti mareasca viata cu 20 de unitati, te poate ajuta in caz ca esti ranit, sau o amuleta pentru noroc")
 print("Amuleta sau licoara costa fiecare 10 banuti\nDoresti sa achizitionezi una dintre ele?\nIntrodu 1 pt amuleta, 2 pentru licoare sau 3 daca nu doresti nimic")
@@ -268,23 +285,34 @@ if(type(erou)==Soldat and erou.diamand==True):
             break
         print("optiune incorecta")
     if(alegere=='1'):
-        print("Ai ales sa ii dai diamantul lui Brock si astfel acesta ti-a spus o scurtatura si te-a ferit de un monstru ce era in drum")
+        delay_print("Ai ales sa ii dai diamantul lui Brock si astfel acesta ti-a spus o scurtatura care Eldoria\n")
         erou.scurtatura=True
     else:
-        print("Treaba ta.")
+        delay_print("Treaba ta.\n")
 else:
-    if(alegere=='1'):
-        erou.scadenumerar(10)
-        erou.crestehp(10)
-        delay_print("Ai ales sa achizitionezi amuleta si norocul ti-a crescut cu 10 procente\nNoile tale statistici sunt {}\n".format(erou.statistici()))
-    elif(alegere=='2'):
-        erou.scadenumerar(10)
-        erou.crestenoroc(10)
-        delay_print("Ai ales sa achizitionezi licoarea si astfel ti-a crescut viata cu 10 procente\nNoile tale statistici sunt {}\n".format(erou.statistici()))
-    else:
-        delay_print("Nu ai ales nimic si iti continui drumul, statisticile tale raman aceleasi {}\n".format(erou.statistici()))
-if(erou.scurtatura==False or erou.prieten==False):
-    delay_print("Nu ai gasit scurtatura catre Eldoria, asa ca te-ai intalnit pe drum")
-
-
-
+    match(alegere):
+        case '1':
+            erou.scadenumerar(10)
+            erou.crestenoroc(10)
+            delay_print("Ai ales sa achizitionezi amuleta si norocul ti-a crescut cu 10 procente\nNoile tale statistici sunt {}\n".format(erou.statistici()))
+        case '2':
+            erou.scadenumerar(10)
+            erou.crestehp(10)
+            delay_print("Ai ales sa achizitionezi licoarea si astfel ti-a crescut viata cu 10 procente\nNoile tale statistici sunt {}\n".format(erou.statistici()))
+        case '3':
+            delay_print("Nu ai ales nimic si iti continui drumul, statisticile tale raman aceleasi {}\n".format(erou.statistici()))
+print("Introdu enter pentru a continua")
+alegere=input()
+os.system('cls')
+elf=Elf(100,75,75,75,75)
+if(type(erou)==Savant or type(erou)==Vrajitor):
+    if(erou.prieten==False):
+        print("Statisticile tale sunt {}".format(erou.statistici()))
+        delay_print("In continuare te intalnesti cu un elf ca cel din stapanul inelelor\nAcesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra elfului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana)\n4.Te folosesti de agilitatea ta si te feresti de atacurile elfului si incerci sa-l iei prin surprindere\n")
+        delay_print("Viata elfului este : {}\n".format(elf.viata))
+        while(1):
+            alegere=input()
+            if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+                break                
+            print("optiune incorecta")
+        
