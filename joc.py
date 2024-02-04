@@ -576,4 +576,4 @@ while(1):
         delay_print("Raspuns corect\n")
         break
 delay_print("Esti eliberat si vezi cum din pamant apare un stativ pe care se afla faimosul elixir al tineretii\n")
-print("Jocul a ajuns la sfarsit! Joc realizat de Rares Catana, student in anul 1 la facultatea de Automatica si Calculatoare UPT, specializarea CTI-RO")
+print("Jocul a ajuns la sfarsit! Joc realizat de Rares Catana, student in anul 1 la Facultatea de Automatica si Calculatoare UPT, specializarea CTI-RO")
