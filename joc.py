@@ -171,18 +171,26 @@ if(alegere=='1'):
         if(type(erou)==Soldat):
             delay_print("Ciuperca ti-a crescut agilitatea cu 10\n")
             erou.cresteagilitatea(10)
+            if(erou.agilitate>100):
+                erou.agilitate=100
             print("noile statistici sunt : {}".format(erou.statistici()))
         elif(type(erou)==Vrajitor):
             delay_print("Ciuperca ti-a crescut agilitatea cu 10\n")
             erou.cresteagilitatea(10)
+            if(erou.agilitate>100):
+                erou.agilitate=100
             print("noile statistici sunt : {}".format(erou.statistici()))
         elif(type(erou)==Savant):
             delay_print("Ciuperca ti-a crescut agilitatea cu 10\n")
             erou.cresteagilitatea(10)
+            if(erou.agilitate>100):
+                erou.agilitate
             print("noile statistici sunt : {}".format(erou.statistici()))
         else:
             delay_print("Ciuperca ti-a crescut inteligenta cu 10\n")
             erou.cresteinteligenta(10)
+            if(erou.inteligenta>100):
+                erou.inteligenta=100
             print("noile statistici sunt : {}".format(erou.statistici()))
 print("In padure dai de un urs cu un diamant in frunte care vine insistent catre tine. Ce faci?\n1.Il ataci si dezlantui o lupta intensa\n2.Faci o vraja asupra lui sa devina prietenul tau si sa vorbeasca limba oamenilor\n3.Vorbesti pe limba lui si il convingi ca esti pasnic\n4.Te feresti de urs si te urci intr-un copac")
 while(1):
@@ -309,10 +317,14 @@ else:
         case '1':
             erou.scadenumerar(10)
             erou.crestenoroc(10)
+            if(erou.noroc>100):
+                erou.noroc=100
             delay_print("Ai ales sa achizitionezi amuleta si norocul ti-a crescut cu 10 procente\nNoile tale statistici sunt {}\n".format(erou.statistici()))
         case '2':
             erou.scadenumerar(10)
             erou.crestehp(10)
+            if(erou.viata>100):
+                erou.viata=100
             delay_print("Ai ales sa achizitionezi licoarea si astfel ti-a crescut viata cu 10 procente\nNoile tale statistici sunt {}\n".format(erou.statistici()))
         case '3':
             delay_print("Nu ai ales nimic si iti continui drumul, statisticile tale raman aceleasi {}\n".format(erou.statistici()))
@@ -460,7 +472,7 @@ match(erou.avantaj):
         delay_print("{} ajunge in Eldoria si se ghideaza dupa propria harta si ajunge la un templu pazit de un gigant de piatra\nAcesta constata ca pentru a deschide poarta are nevoie de inima gigantului si isi da seama ca singura metoda de a obine este sa se lupte cu gigantul si sa o ia de la el\n".format(nume))
         gigant=Gigant(200,100-erou.agilitate,100-erou.magie,100-erou.forta,100-erou.inteligenta)
         while(1):
-            delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal folosindu-ti propria forta\n2.Magie negra asupra gigantului\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Te folosesti de agilitatea ta si te feresti de atacurile gigantului si incerci sa-l iei prin surprindere\n")
+            delay_print("Acesta te ataca si iti provoaca daune\nTrebuia sa contraataci, ce abilitati iti vei folosi?\n1.Atac frontal\n2.Magie negra\n3.Inteligenta(iti folosesti un dispozitiv ce il ai la indemana\n4.Atac prin invaluire(Agilitate)\n")
             delay_print("Viata gigantului este : {}\nStatisticile tale sunt {}\n".format(gigant.viata,erou.statistici()))
             while(1):
                 alegere=input()
@@ -504,4 +516,64 @@ match(erou.avantaj):
                         gameover()
                     if(gigant.viata<=0):
                         print("Ai infrant gigantul cu succes")
-                        break               
+                        break
+print("Apasa enter pentru a continua")
+alegere=input()
+os.system('cls')
+if(erou.viata<100):
+    delay_print("Viata ti-a revenit la 100 de procente\n")
+delay_print("Ajungi intr-o camera plina de hieroglife si te aproprii de un stativ pe care se afla o scrisoare. Scrisoarea spune asa:\nCel care decide sa-si incerce norocul si treaca de aceasta usa va trebui sa rezolve cateva ghicitori intr-un timp limitat\n")
+print("Apasa enter pentru a continua")
+alegere=input()
+os.system('cls')
+delay_print("Ajuns in eroul este prins in anumite nisipuri miscatoare care il trag tot mai jos. Se pare ca va trebui sa raspunda rapid la intrebari\n")
+while(1):
+    delay_print("Prima intrebare este: Unele luni ale anului au 31 de zile, altele au numai 30. Câte luni au 28 de zile?\n1.6\n2.12\n3.una\n4.10\n")
+    while(1):
+        alegere=input()
+        if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+            break
+        print("optiune incorecta")
+    os.system('cls')
+    if(alegere=='1' or alegere=='3' or alegere=='4'):
+        erou.scadehp(25)
+        if(erou.viata<=0):
+            gameover()
+        delay_print("Ai raspuns gresit la intrebare si viata ti-a scazut cu 10 procente. Noua ta viata este : {}\n".format(erou.viata))
+    else:
+        delay_print("Raspuns corect\n")
+        break
+while(1):
+    delay_print("A 2-a intrebare este: Tatăl Adrianei are cinci fete: Ana, Alina, Anemona și Ariana. Cum o cheamă pe a cincea?\n1.Ana\n2.Alina\n3.Anemona\n4.Adriana\n")
+    while(1):
+        alegere=input()
+        if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+            break
+        print("optiune incorecta")
+    os.system('cls')
+    if(alegere=='1' or alegere=='3' or alegere=='2'):
+        erou.scadehp(25)
+        if(erou.viata<=0):
+            gameover()
+        delay_print("Ai raspuns gresit la intrebare si viata ti-a scazut cu 10 procente. Noua ta viata este : {}\n".format(erou.viata))
+    else:
+        delay_print("Raspuns corect\n")
+        break
+while(1):
+    delay_print("A 3-a intrebare este: Doctorul îţi prescrie să iei trei pastile în fiecare seară, câte una la fiecare jumătate de oră. În câte minute ai terminat sa iei pastilele?\n1.30\n2.90\n3.60\n4.120\n")
+    while(1):
+        alegere=input()
+        if(alegere=='1' or alegere=='2' or alegere=='3' or alegere=='4'):
+            break
+        print("optiune incorecta")
+    os.system('cls')
+    if(alegere=='1' or alegere=='2' or alegere=='4'):
+        erou.scadehp(25)
+        if(erou.viata<=0):
+            gameover()
+        delay_print("Ai raspuns gresit la intrebare si viata ti-a scazut cu 10 procente. Noua ta viata este : {}\n".format(erou.viata))
+    else:
+        delay_print("Raspuns corect\n")
+        break
+delay_print("Esti eliberat si vezi cum din pamant apare un stativ pe care se afla faimosul elixir al tineretii\n")
+print("Jocul a ajuns la sfarsit! Joc realizat de Rares Catana, student in anul 1 la facultatea de Automatica si Calculatoare UPT, specializarea CTI-RO")
