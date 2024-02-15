@@ -8,7 +8,7 @@ Eldoria Quest is a text-based adventure game written in Python, where players em
 
 Clone the repository to your local machine:
 
-git clone https://github.com/your-username/eldoria-quest.git
+git clone https://github.com/raresc4/eldoria-quest.git
 
 # Navigate to the directory:
 
